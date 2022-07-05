@@ -20,15 +20,13 @@ public class CarController {
     // POST запрос по адресу /cars
     @PostMapping("/cars")
     public ResponseEntity<?> create(@RequestBody Car car) {
-        throw new IllegalStateException("TEST");
-
-//        try {
-//            Car _car = repository
-//                    .save(new Car(car.getBrand(), car.getModelName(), car.getColor(), car.getPlaces()));
-//            return new ResponseEntity<>(_car, HttpStatus.CREATED);
-//        } catch (Exception e) {
-//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
+        try {
+            Car _car = repository
+                    .save(new Car(car.getBrand(), car.getModelName(), car.getColor(), car.getPlaces()));
+            return new ResponseEntity<>(_car, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     // GET запрос по адресу /cars
